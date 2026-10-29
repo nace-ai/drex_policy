@@ -45,6 +45,20 @@ When the validator builds its own client, each HTTP attempt times out after 60 s
 $ guardrails hub install hub://nace/drex_policy
 ```
 
+You can also install the package from PyPI:
+
+```bash
+$ pip install drex-policy
+```
+
+With a PyPI install, import the validator from `drex_policy` instead of `guardrails.hub`:
+
+```python
+from drex_policy import DrexPolicy
+```
+
+The examples below use the hub import. The class and its arguments are the same.
+
 ## Usage Examples
 
 ### Validating string output via Python

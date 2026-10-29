@@ -8,7 +8,7 @@ test:
 	pytest ./tests
 
 type:
-	pyright validator
+	pyright drex_policy
 
 qa:
 	make lint

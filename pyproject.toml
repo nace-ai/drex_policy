@@ -28,5 +28,8 @@ testpaths = [
     "tests"
 ]
 
+[tool.setuptools]
+packages = ["drex_policy"]
+
 [tool.pyright]
-include = ["validator"]
+include = ["drex_policy"]

@@ -5,8 +5,8 @@ import pytest
 from guardrails import Guard
 from nace_sdk import Noul, RetryPolicy, Score, SystemOneResponse
 
-from validator import DrexPolicy
-from validator.main import CLIENT_INFO, DrexPolicyError
+from drex_policy import DrexPolicy
+from drex_policy.main import CLIENT_INFO, DrexPolicyError
 
 
 class FakeClient:
@@ -139,7 +139,7 @@ def test_built_client_settings(monkeypatch):
         def __init__(self, **kwargs):
             seen.update(kwargs)
 
-    monkeypatch.setattr("validator.main.NaceClient", Recorder)
+    monkeypatch.setattr("drex_policy.main.NaceClient", Recorder)
     DrexPolicy(question=TOXIC, fail_at=0.5)._get_client()
     assert seen["client_info"] == CLIENT_INFO == "drex-policy/0.1.0"
     assert seen["timeout"] == 60

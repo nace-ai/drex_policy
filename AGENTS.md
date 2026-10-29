@@ -18,7 +18,7 @@ Build Guardrails Hub validators that follow the `validator-template` conventions
 
 ## Required Repo Shape
 
-Keep this minimum structure:
+Keep this minimum structure. In this repository the package directory is `drex_policy/` instead of `validator/`, because the package is published to PyPI as `drex-policy` and a top-level `validator` module would collide with other template-based validators. Read `validator/` below as `drex_policy/`.
 
 ```text
 .github/workflows/pr_qc.yml
