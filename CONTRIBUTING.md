@@ -34,5 +34,5 @@
     - Add/update the `dependencies` field to include all dependencies your validator needs.
 - If there are are any post-installation steps such as downloading tokenizers, logging into huggingface etc., update the [post-install.py](validator/post-install.py) file accordingly.
 - You can add additional files to the [validator](validator) directory, but don't rename any existing files/directories.
-    - e.g. Add any environment variables (without the values, just the keys) to the [.env](.env) file.
+    - e.g. Add any environment variables (without the values, just the keys) to the [.env.example](.env.example) file.
 - Ensure that there are no other dependencies or any additional steps required to run your validator.
