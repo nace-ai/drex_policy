@@ -30,7 +30,7 @@ To check images with the text, pass `model="drex-max"` and put the images in `me
 
 * Dependencies:
 	- guardrails-ai>=0.4.0
-	- nace-sdk>=0.4.0
+	- nace-sdk>=0.6.2
 
 * Access keys:
 	- `NACE_API_KEY`: a key from [console.nace.ai](https://console.nace.ai)
