@@ -1,16 +1,17 @@
+.PHONY: dev lint type test qa
+
+# Editable install with ruff, pyright and pytest.
 dev:
-	pip install -e ".[dev]"
+	python -m pip install -e ".[dev]"
 
 lint:
-	ruff check .
-
-test:
-	pytest ./tests
+	ruff check drex_policy tests
 
 type:
-	pyright validator
+	pyright
 
-qa:
-	make lint
-	make type
-	make test
+test:
+	pytest
+
+# Everything CI runs.
+qa: lint type test

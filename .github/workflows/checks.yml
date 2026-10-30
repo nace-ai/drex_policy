@@ -1,0 +1,27 @@
+# Lint, type-check and test drex-policy on every pull request and on main.
+name: Checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install drex-policy with the dev tools
+        run: python -m pip install -e ".[dev]"
+      - name: Run ruff, pyright and pytest
+        run: make qa
