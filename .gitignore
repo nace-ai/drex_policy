@@ -1,10 +1,16 @@
-.python-version
-__pycache__/
-build
-*.egg-info
-.venv
-.pytest_cache
-.ruff_cache
-.vscode
-.idea
+# Local secrets: keys go in .env, never in git (see .env.example).
 .env
+
+# Python build and tool output
+__pycache__/
+*.egg-info/
+build/
+dist/
+.venv/
+.python-version
+.pytest_cache/
+.ruff_cache/
+
+# Editors
+.idea/
+.vscode/

@@ -1,16 +1,15 @@
-# Overview
+# drex-policy
+
+A [Guardrails](https://github.com/guardrails-ai/guardrails) validator that asks Drex, Nace.AI's decision model, one question about a string.
 
 | Developed by | Nace.AI |
 | --- | --- |
 | Date of development | Oct 29, 2026 |
 | Validator type | Moderation, policy |
-| Blog |  |
-| License | Apache 2 |
+| License | MIT |
 | Input/Output | Input, Output |
 
-## Description
-
-### Intended Use
+## What it checks
 
 `DrexPolicy` asks [Drex](https://console.nace.ai/docs) one question about a string and fails when the answer crosses a threshold you set. Use it for checks such as PII present, off-topic, toxicity level, jailbreak attempt, or competitor mention.
 
@@ -21,13 +20,13 @@ The question is a `nace_sdk.Noul` (probability of a yes answer) or a `nace_sdk.S
 
 The Drex answer is in the result metadata on pass and on fail.
 
-### Models
+## Models
 
 The default model is `drex-v2.0`. Text-only checks can use any Drex model id, which is sent unchanged. `drex-latest` is sent as `drex-latest`. It is not `drex-max`.
 
 To check images with the text, pass `model="drex-max"` and put the images in `metadata["images"]`. Each image is a URL or a data URL (PNG, JPEG, or WebP). `drex-max` accepts at most 8 images. If images are present and the model is not `drex-max`, or there are more than 8 images, the validator raises `DrexPolicyError` before it calls Drex. It does not drop the images.
 
-### Requirements
+## Requirements
 
 * Dependencies:
 	- guardrails-ai>=0.4.0
@@ -39,7 +38,7 @@ To check images with the text, pass `model="drex-max"` and put the images in `me
 
 When the validator builds its own client, each HTTP attempt times out after 60 seconds, the total retry budget is 180 seconds, and requests carry `X-Nace-Client: drex-policy/0.1.0`.
 
-## Installation
+## Install
 
 ```bash
 $ guardrails hub install hub://nace/drex_policy
@@ -59,9 +58,9 @@ from drex_policy import DrexPolicy
 
 The examples below use the hub import. The class and its arguments are the same.
 
-## Usage Examples
+## Examples
 
-### Validating string output via Python
+### Check a string
 
 ```python
 from guardrails import Guard
@@ -80,7 +79,7 @@ guard.validate("Our office opens at 9am.")  # Validator passes
 guard.validate("Call me on +1 415 555 0100.")  # Validator fails
 ```
 
-### Checking text with images
+### Check text with images
 
 ```python
 from guardrails import Guard
@@ -105,7 +104,7 @@ guard.validate(
 )
 ```
 
-### Validating JSON output via Python
+### Check one field of structured output
 
 ```python
 from pydantic import BaseModel, Field
@@ -128,11 +127,10 @@ guard = Guard.for_pydantic(output_class=Reply)
 guard.parse('{"answer": "Your invoice is in Settings > Billing."}')
 ```
 
-# API Reference
+## API reference
 
 **`__init__(self, question, fail_at, fail_when=None, question_id="policy", model=None, client=None, on_fail=None)`**
 <ul>
-Initializes a new instance of the DrexPolicy class.
 
 **Parameters**
 - **`question`** *(nace_sdk.Noul | nace_sdk.Score)*: The question Drex answers about the value. If `instructions` is omitted, it stays `None` and is not sent.
@@ -141,7 +139,7 @@ Initializes a new instance of the DrexPolicy class.
 - **`question_id`** *(str)*: Key of the question in the Drex request and response. Default `"policy"`.
 - **`model`** *(str)*: Drex model id. Default `drex-v2.0`. Images need `drex-max`.
 - **`client`** *(nace_sdk.NaceClient)*: An existing client. If omitted, the validator builds one that reads `NACE_API_KEY` and `NACE_BASE_URL`.
-- **`on_fail`** *(str, Callable)*: The policy to enact when a validator fails. If `str`, must be one of `reask`, `fix`, `filter`, `refrain`, `noop`, `exception` or `fix_reask`. Otherwise, must be a function that is called when the validator fails.
+- **`on_fail`** *(str, Callable)*: What Guardrails does on a fail: one of `exception`, `noop`, `reask`, `fix`, `filter`, `refrain` or `fix_reask`, or a function that Guardrails calls on a fail.
 </ul>
 <br/>
 
@@ -167,3 +165,7 @@ If Drex cannot answer (a network error, an API error, or a response without the 
 | `drex_question_id` | The `question_id` |
 | `drex_answer` | The Drex answer, for example `{"type": "noul", "noul": 0.93}` |
 </ul>
+
+## License
+
+MIT. Copyright (c) 2026 Nace.AI. See [LICENSE](LICENSE).

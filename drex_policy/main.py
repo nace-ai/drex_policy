@@ -39,13 +39,7 @@ class SystemOneCaller(Protocol):
 class DrexPolicy(Validator):
     """Validates a string by asking Drex one `noul` or `score` question about it.
 
-    **Key Properties**
-
-    | Property                      | Description                       |
-    | ----------------------------- | --------------------------------- |
-    | Name for `format` attribute   | `nace/drex_policy`                |
-    | Supported data types          | `string`                          |
-    | Programmatic fix              | None                              |
+    Registered as `nace/drex_policy` for `string` values. It returns no fix value.
 
     Args:
         question (Noul | Score): The Drex question asked about the value.

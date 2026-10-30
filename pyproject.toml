@@ -1,35 +1,30 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "drex-policy"
 version = "0.1.0"
 description = "Guardrails validator that checks text, or text with images, against a Drex noul or score question."
-authors = [
-    {name = "Nace.AI", email = "alish@nace.ai"}
-]
-license = {file = "LICENSE"}
+authors = [{ name = "Nace.AI", email = "alish@nace.ai" }]
+license = "MIT"
+license-files = ["LICENSE"]
 readme = "README.md"
 # nace-sdk requires Python 3.11 or later.
-requires-python = ">= 3.11"
+requires-python = ">=3.11"
 dependencies = [
     "guardrails-ai>=0.4.0",
-    "nace-sdk>=0.4.0"
+    "nace-sdk>=0.4.0",
 ]
 
 [project.optional-dependencies]
-dev = [
-    "pyright",
-    "pytest",
-    "ruff"
-] 
-
-[tool.pytest.ini_options]
-minversion = "6.0"
-addopts = "-rP"
-testpaths = [
-    "tests"
-]
+dev = ["pyright", "pytest", "ruff"]
 
 [tool.setuptools]
 packages = ["drex_policy"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
 
 [tool.pyright]
 include = ["drex_policy"]
