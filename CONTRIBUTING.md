@@ -12,7 +12,7 @@ The package directory is `drex_policy`, not the template's `validator`. A top-le
 
 ## Set up and test
 
-1. Install the package and the dev tools with `make dev` (or `pip install -e ".[dev]"`). Python 3.11 or later is required, because `nace-sdk` requires it.
+1. Install the package and the dev tools with `make dev` (or `pip install -e ".[dev]"`). Python 3.10 or later is required.
 2. Run `make qa`. It runs `ruff`, `pyright` and `pytest`.
 
 To call Drex yourself, set the keys listed in [.env.example](.env.example). Do not commit a `.env` file.
