@@ -169,3 +169,5 @@ If Drex cannot answer (a network error, an API error, or a response without the 
 ## License
 
 MIT. Copyright (c) 2026 Nace.AI. See [LICENSE](LICENSE).
+
+Scaffolding from [guardrails-ai/validator-template](https://github.com/guardrails-ai/validator-template) (Apache-2.0).
