@@ -1,6 +1,6 @@
 # Notes for coding agents
 
-This repo is `drex-policy`: one Guardrails validator, `DrexPolicy`, that asks Drex a `noul` or `score` question through `nace-sdk`. See [CONTRIBUTING.md](CONTRIBUTING.md) for the layout, setup and release steps.
+This repo is `nace-ai/nace-guardrails-ai` (Drex for Guardrails AI), published to PyPI as `drex-policy`: one Guardrails validator, `DrexPolicy`, that asks Drex a `noul` or `score` question through `nace-sdk`. See [CONTRIBUTING.md](CONTRIBUTING.md) for the layout, setup and release steps.
 
 ## Rules
 

@@ -1,6 +1,6 @@
 # Publishes drex-policy to PyPI when a v* tag is pushed, through PyPI Trusted
 # Publishing: no API token is stored. The PyPI project (or pending publisher)
-# must trust owner nace-ai, repo drex_policy, workflow publish.yml and
+# must trust owner nace-ai, repo nace-guardrails-ai, workflow publish.yml and
 # environment pypi.
 name: Publish to PyPI
 
