@@ -1,6 +1,6 @@
-# Contributing to drex-policy
+# Contributing to Drex for Guardrails AI
 
-This repository holds the `DrexPolicy` Guardrails validator. It is published to PyPI as `drex-policy`, and the import is `from drex_policy import DrexPolicy`.
+This repository, `nace-ai/nace-guardrails-ai`, holds the `DrexPolicy` Guardrails validator. It is published to PyPI as `drex-policy`, and the import is `from drex_policy import DrexPolicy`.
 
 ## Layout
 

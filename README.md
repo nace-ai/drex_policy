@@ -1,6 +1,6 @@
-# drex-policy
+# Drex for Guardrails AI
 
-A [Guardrails](https://github.com/guardrails-ai/guardrails) validator that asks Drex, Nace.AI's decision model, one question about a string.
+`DrexPolicy` is a [Guardrails AI](https://github.com/guardrails-ai/guardrails) validator that asks Drex, Nace.AI's decision model, one question about a string. It ships as the `drex-policy` package on PyPI.
 
 | Developed by | Nace.AI |
 | --- | --- |
@@ -41,22 +41,22 @@ When the validator builds its own client, each HTTP attempt times out after 60 s
 ## Install
 
 ```bash
-$ guardrails hub install hub://nace/drex_policy
+pip install drex-policy
 ```
 
-You can also install the package from PyPI:
-
-```bash
-$ pip install drex-policy
-```
-
-With a PyPI install, import the validator from `drex_policy` instead of `guardrails.hub`:
+Import the validator from `drex_policy`:
 
 ```python
 from drex_policy import DrexPolicy
 ```
 
-The examples below use the hub import. The class and its arguments are the same.
+To install the current source instead of the PyPI release:
+
+```bash
+pip install git+https://github.com/nace-ai/nace-guardrails-ai
+```
+
+The validator is not in the Guardrails Hub. Guardrails retired Hub CLI installs on August 25, 2026, so install it with pip as shown above.
 
 ## Examples
 
@@ -64,7 +64,7 @@ The examples below use the hub import. The class and its arguments are the same.
 
 ```python
 from guardrails import Guard
-from guardrails.hub import DrexPolicy
+from drex_policy import DrexPolicy
 from nace_sdk import Noul
 
 guard = Guard().use(
@@ -83,7 +83,7 @@ guard.validate("Call me on +1 415 555 0100.")  # Validator fails
 
 ```python
 from guardrails import Guard
-from guardrails.hub import DrexPolicy
+from drex_policy import DrexPolicy
 from nace_sdk import Score
 
 guard = Guard().use(
@@ -109,7 +109,7 @@ guard.validate(
 ```python
 from pydantic import BaseModel, Field
 from guardrails import Guard
-from guardrails.hub import DrexPolicy
+from drex_policy import DrexPolicy
 from nace_sdk import Noul
 
 off_topic = DrexPolicy(

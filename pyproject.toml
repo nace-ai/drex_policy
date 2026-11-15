@@ -16,6 +16,11 @@ dependencies = [
     "nace-sdk>=0.6.2",
 ]
 
+[project.urls]
+Homepage = "https://github.com/nace-ai/nace-guardrails-ai"
+Repository = "https://github.com/nace-ai/nace-guardrails-ai"
+Issues = "https://github.com/nace-ai/nace-guardrails-ai/issues"
+
 [project.optional-dependencies]
 dev = ["pyright", "pytest", "ruff"]
 

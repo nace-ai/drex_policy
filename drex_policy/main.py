@@ -148,7 +148,7 @@ class DrexPolicy(Validator):
         result_metadata = {
             "drex_model": model,
             "drex_question_id": self._question_id,
-            "drex_answer": answer.model_dump(mode="json"),
+            "drex_answer": answer.model_dump(mode="json", exclude_none=True),
         }
         if failed:
             relation = "<" if fail_low else ">="
